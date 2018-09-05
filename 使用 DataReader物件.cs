@@ -28,6 +28,12 @@ dr = cmd.ExecuteReader();
 cn.Close();
 
 
+//DataReader物件常用成員
+
+//如何使用 DataReader物件讀取資料表紀錄
+
+//
+
 
 
 
