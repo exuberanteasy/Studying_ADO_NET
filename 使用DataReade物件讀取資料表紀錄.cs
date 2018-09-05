@@ -61,7 +61,17 @@ while (dr.Read())
     textBox1.Text += Environment.NewLine;
 }
 
-
+//=========================================================================================
+如何提升 DataReader物件 的讀取效率
+while (dr.Read())
+{
+    textBox1.Text += dr.GetString(0) + "\t";
+    textBox1.Text += dr.GetString(1) + "\t";
+    textBox1.Text += dr.GetInt32(2).ToString() + "\t";
+    textBox1.Text += dr.GetInt32(3).ToString() + "\t";
+    textBox1.Text += dr.GetInt32(4).ToString() + "\t";
+    textBox1.Text += Environment.NewLine;
+}
 
 
 
