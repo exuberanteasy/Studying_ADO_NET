@@ -73,5 +73,15 @@ while (dr.Read())
     textBox1.Text += Environment.NewLine;
 }
 
-
-
+//===============================================================
+//如果使用的是SQL Server7.0以上，則可以使用 GetSqlXXX()方法，因為 GetSqlXXX()方法底層是採用 SQL Server 的TDS格式交換資料，
+//因此執行效率會比 GetSqlXXX()方法更快。
+ while (dr.Read())
+{
+    textBox1.Text += dr.GetSqlString(0).ToString() + "\t"; //學號
+    textBox1.Text += dr.GetSqlString(1).ToString() + "\t"; //姓名
+    textBox1.Text += dr.GetSqlInt32(2).ToString() + "\t";  //中文
+    textBox1.Text += dr.GetSqlInt32(3).ToString() + "\t";  //English
+    textBox1.Text += dr.GetSqlInt32(4).ToString() + "\t";  //數學
+    textBox1.Text += Environment.NewLine;
+}
