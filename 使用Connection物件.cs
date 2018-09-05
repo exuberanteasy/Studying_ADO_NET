@@ -51,6 +51,8 @@ namespace ConnectionDemo1
             cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                                   "AttachDbFilename=|C:/Users/III/Desktop/TestSQLServer/ConnectionDemo1/bin/Debug|Northwind.mdf;" +
                                   "Integrated Security=True";
+                      //??? 這段有問題
+                                  
             ShowConnection(); //呼叫ShowConnection方法
         }
 
