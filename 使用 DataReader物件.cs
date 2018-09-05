@@ -21,6 +21,11 @@ Case 02:
 using System.Data.OleDb;
 OleDbConnection cn = new OleDbConnection("連接字串");
 OleDbCommand cmd;
+OleDbDataReader dr;
+cmd = new OleDbCommand("SQL命令或預存程序名稱", cn);
+cn.Open();
+dr = cmd.ExecuteReader();
+cn.Close();
 
 
 
