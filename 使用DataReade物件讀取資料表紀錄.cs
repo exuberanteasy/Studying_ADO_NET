@@ -38,3 +38,29 @@ namespace DataReaderDemo1
         }
     }
 }
+
+//==========================================================================================
+
+while (dr.Read())
+{
+    textBox1.Text += dr["學號"].ToString() + "\t";
+    textBox1.Text += dr["姓名"].ToString() + "\t";
+    textBox1.Text += dr["中文"].ToString() + "\t";
+    textBox1.Text += dr["數學"].ToString() + "\t";
+    textBox1.Text += Environment.NewLine;
+}
+
+//=========================================================================================
+while (dr.Read())
+{
+    for (int i =0; i<dr.FieldCount; i++)
+    {
+        textBox1.Text += dr.GetValue(i).ToString() + "\t";
+    }
+    textBox1.Text += Environment.NewLine;
+}
+
+
+
+
+
