@@ -1,0 +1,11 @@
+引用ADO.NET命名空間
+System.Data
+
+Tables
+Rows
+Columns
+Constraints
+DataSet
+
+寫法如下:
+using System.Data;  //引用 ADO.NET 基礎物件
