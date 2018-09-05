@@ -1,6 +1,6 @@
 //設定connString連接字串
 
-Data Soure=(LocalDB)
+Data Source=(LocalDB)
 \MSSQLLocalDB;
 AttachDbFilename=|DataDirectory|
 Northwind.mdf;
