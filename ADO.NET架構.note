@@ -3,4 +3,12 @@ ADO.NET架構
 .NET Framework Data Provider(指資料來源提供者)
 DataSet資料集(資料處理的核心)
 
-兩大主要
+兩大主要部分
+# https://docs.microsoft.com/zh-tw/dotnet/framework/data/adonet/ado-net-architecture
+
+簡介
+Connection --- 提供和資料來源的連接功能
+Command --- 提供執行存取資料庫命令，並傳送資料或修改資料的功能 => 例如執行SQL命令、預存程式
+DataAdapter --- 擔任 DataSet 物件和資料來源間的橋樑。DataAdpter使用四個Command物件來執行查詢、新增、修改、刪除的SQL命令，
+                把資料載入DataSet，或者把DataSet內的資料更新回資料來源。
+DataReader --- 透過 Command 物件執行 SQL 查詢命令取得資料流，以便進行高速、唯讀的資料瀏覽功能。
