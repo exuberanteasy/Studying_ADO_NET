@@ -49,7 +49,7 @@ namespace ConnectionDemo1
         {
             // 設定連接字串，用來連接 Northwind.mdf 資料庫
             cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                                  "AttachDbFilename=|C:/Users/III/Desktop/TestSQLServer/ConnectionDemo1/bin/Debug|Northwind.mdf;" +
+                                  "AttachDbFilename=|DataDirectory|Northwind.mdf;" +
                                   "Integrated Security=True";
                       //??? 這段有問題
                                   
