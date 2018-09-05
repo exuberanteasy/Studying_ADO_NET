@@ -53,7 +53,12 @@ namespace SqlStringDemo1
                 }
             }
         }
-
-        
     }
 }
+//====================================================================
+
+string slesectCmd = "SELECT * FROM 成績單 WHERE 姓名 = '"
+    + searchName.replace("'","''")+"'";
+
+
+
