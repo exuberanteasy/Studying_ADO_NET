@@ -20,3 +20,57 @@ cn = new OleDbConnection(cnStr);  //建立 cn 為 OleDbConnection物件 並指�
 
 
 6. cn.Close();  //完成資料庫存取後再使用 Close方法 關閉與資料庫連接
+//======================================================================
+//連接資料庫 範例
+using System.Data.SqlClient;
+
+namespace ConnectionDemo1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        SqlConnection cn = new SqlConnection();  //SqlConnection物件 cn
+
+        //定義 ShowConnection方法 用來在 txtShow上 顯示資料來源的相關資訊
+        private void ShowConnection()
+        {
+            txtShow.Text = "連接字串: " + cn.ConnectionString + Environment.NewLine;
+            txtShow.Text += "逾時秒數: " + cn.ConnectionTimeout + Environment.NewLine;
+            txtShow.Text += "資料庫: " + cn.Database + Environment.NewLine;
+            txtShow.Text += "資料來源: " + cn.DataSource + Environment.NewLine;
+        }
+
+        //表單載入時執行此事件
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // 設定連接字串，用來連接 Northwind.mdf 資料庫
+            cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                                  "AttachDbFilename=|C:/Users/III/Desktop/TestSQLServer/ConnectionDemo1/bin/Debug|Northwind.mdf;" +
+                                  "Integrated Security=True";
+            ShowConnection(); //呼叫ShowConnection方法
+        }
+
+        private void btnCnState_Click(object sender, EventArgs e)
+        {
+            //判斷資料庫有沒有開
+            if (cn.State == ConnectionState.Closed)
+            {
+                cn.Open();
+                btnCnState.Text = "關閉";
+                txtShow.Text += "目前狀態:資料庫已連接" + Environment.NewLine;
+            }
+            //判斷目前是否是開啟狀態
+            else if (cn.State == ConnectionState.Open)
+            {
+                cn.Close();
+                btnCnState.Text = "開啟";
+                txtShow.Text += "目前狀態:資料已關閉" + Environment.NewLine;
+            }
+            ShowConnection();
+        }        
+    }
+}
