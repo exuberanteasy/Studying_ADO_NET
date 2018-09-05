@@ -1,7 +1,8 @@
 //如何使用 DataReader物件
 
-
 //如何建立 DataReader物件
+
+Case 01:
 1. using System.Data.SqlClient;
 
 2. SqlConnection cn = new SqlConnction("連接字串");
@@ -13,6 +14,22 @@
 
 5. cn.Open();
    dr = cmd.ExecuteReader();  //使用
+
+6. cn.Close();
+
+Case 02:
+using System.Data.OleDb;
+OleDbConnection cn = new OleDbConnection("連接字串");
+OleDbCommand cmd;
+
+
+
+
+
+
+
+
+
    
    
-   把書上只要是程式碼的部分 都打看看
+   把書上只要是程式碼的部分 都盡量打看看
