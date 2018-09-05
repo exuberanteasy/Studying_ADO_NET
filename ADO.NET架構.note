@@ -12,3 +12,7 @@ Command --- 提供執行存取資料庫命令，並傳送資料或修改資料�
 DataAdapter --- 擔任 DataSet 物件和資料來源間的橋樑。DataAdpter使用四個Command物件來執行查詢、新增、修改、刪除的SQL命令，
                 把資料載入DataSet，或者把DataSet內的資料更新回資料來源。
 DataReader --- 透過 Command 物件執行 SQL 查詢命令取得資料流，以便進行高速、唯讀的資料瀏覽功能。
+
+Command物件用來執行用來執行相關的SQL命令(Select、Insert、Update、Delete)。
+
+透過 Update方法 則可以將 DataSet物件 的資料 更新到指定的資料庫中。
