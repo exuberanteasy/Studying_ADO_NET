@@ -56,9 +56,10 @@ namespace SqlStringDemo1
     }
 }
 //====================================================================
-
+// 在 SQL語法中將連續兩個單引號「''」視為一個單引號，所以我們可以用 string 字串類別的 Replace方法將字串中的一個單引號取代為兩個單引號:
 string slesectCmd = "SELECT * FROM 成績單 WHERE 姓名 = '"
-    + searchName.replace("'","''")+"'";
-
+                    + searchName.replace("'","''") + "'";
+//修改為下列敘述即可
+string SelectCmd = "SELECT * FROM 成績單 WHERE 姓名 = ' " + searchName.Replace("'", "''") + "'";
 
 
