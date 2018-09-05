@@ -65,11 +65,11 @@ while (dr.Read())
 如何提升 DataReader物件 的讀取效率
 while (dr.Read())
 {
-    textBox1.Text += dr.GetString(0) + "\t";
-    textBox1.Text += dr.GetString(1) + "\t";
-    textBox1.Text += dr.GetInt32(2).ToString() + "\t";
-    textBox1.Text += dr.GetInt32(3).ToString() + "\t";
-    textBox1.Text += dr.GetInt32(4).ToString() + "\t";
+    textBox1.Text += dr.GetString(0) + "\t";  //學號
+    textBox1.Text += dr.GetString(1) + "\t";  //姓名
+    textBox1.Text += dr.GetInt32(2).ToString() + "\t";  //中文
+    textBox1.Text += dr.GetInt32(3).ToString() + "\t";  //English
+    textBox1.Text += dr.GetInt32(4).ToString() + "\t";  //數學
     textBox1.Text += Environment.NewLine;
 }
 
