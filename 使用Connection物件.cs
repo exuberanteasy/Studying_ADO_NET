@@ -16,4 +16,7 @@ string cnStr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=資料庫真實路�
 4. 建立 OleDbConnection 資料庫連接物件
 cn = new OleDbConnection(cnStr);  //建立 cn 為 OleDbConnection物件 並指定 cnStr 為資料庫的連接字串。
 
-5.
+5. cn.Open();  //使用 Open 方法開啟與資料酷的連接
+
+
+6. cn.Close();  //完成資料庫存取後再使用 Close方法 關閉與資料庫連接
