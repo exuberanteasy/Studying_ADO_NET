@@ -363,8 +363,30 @@ namespace ADO.NET.Starter
                 }
                 this.listBox2.Items.Add("=========================================");
             }
-
         }
+        
+        //測試抓取記錄
+        private void button19_Click(object sender, EventArgs e)
+        {
+            //ProductRow - 強型別 - Strong type (具型別)
+            MessageBox.Show(this.northwindDataSet1.Products[0].ProductName);
+
+            //======================================================================
+            //compiler OK; Run time error - DataRow - 弱型別 weak (不具型別)
+            MessageBox.Show(this.northwindDataSet1.Products.Rows[0]["ProductName"].ToString());
+            MessageBox.Show(this.northwindDataSet1.Products.Rows[0][1].ToString());
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
