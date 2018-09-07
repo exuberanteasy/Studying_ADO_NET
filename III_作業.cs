@@ -1,4 +1,7 @@
 //練習
+//III 老師出的作業
+
+
 
 using System.Data;
 using System.Data.SqlClient;
