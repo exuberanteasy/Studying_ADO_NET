@@ -410,6 +410,25 @@ namespace Starter
             InitializeComponent();
             this.tabControl1.SelectedIndex = 1;
         }
+
+        //Windows 驗證
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
+                conn.Open();
+                MessageBox.Show("successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+        
+        
+        
     }
 }
 
