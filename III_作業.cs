@@ -166,6 +166,25 @@ namespace ADO.NET.Starter
             MessageBox.Show("conn Dispose");
         }
         
+        // DisConnected => Load Data ???
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //DisConnected 離線環境 -  DataSet
+
+            //Step 1:SqlConnection
+            //Step 2: SqlDataAdapter
+            //Step 3: DataSet
+            //Step 4: Control UI
+
+            SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
+            SqlDataAdapter adapter = new SqlDataAdapter("Select * From Products", conn);
+            DataSet ds = new DataSet();
+
+            adapter.Fill(ds); //Auto conn.open() => SqlCommand.executeXXX()...SqlDataReader...=> conn.Close()
+
+            this.dataGridView1.DataSource = ds.Tables[0];
+        }
+        
         
         
         
