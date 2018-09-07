@@ -167,7 +167,7 @@ namespace ADO.NET.Starter
         }
         
         
-        // 開始 ****** ADO.NET 1.0   - SqlDataAdapter ******
+        // 開始 ****** ADO.NET 1.0   - SqlDataAdapter *****************************************************
         // DisConnected => Load Data ???
         private void button5_Click(object sender, EventArgs e)
         {
@@ -198,8 +198,23 @@ namespace ADO.NET.Starter
 
             this.dataGridView1.DataSource = ds.Tables[0];
         }
+        // 結束 ****** ADO.NET 1.0   - SqlDataAdapter ****************************************************
         
-        // 結束 ****** ADO.NET 1.0   - SqlDataAdapter ******
+        // 開始 ****** ADO.NET 2.0   - SqlDataAdapter ****************************************************
+        // Load Data - Products
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //2.0 xxxTableAdapter
+            //Fill()=>Auto conn.open()=>SqlCommand.executeXXX()..sqlDataReader...=>conn.Close()
+            
+            this.productsTableAdapter1.Fill(this.northwindDataSet1.Products);
+            this.dataGridView2.DataSource = this.northwindDataSet1.Products;
+        }
+        
+        
+        
+        
+        // 結束 ****** ADO.NET 2.0   - SqlDataAdapter ***************************************************
         
         
         
