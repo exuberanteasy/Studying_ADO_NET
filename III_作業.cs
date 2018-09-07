@@ -166,6 +166,8 @@ namespace ADO.NET.Starter
             MessageBox.Show("conn Dispose");
         }
         
+        
+        // 開始 ****** ADO.NET 1.0   - SqlDataAdapter ******
         // DisConnected => Load Data ???
         private void button5_Click(object sender, EventArgs e)
         {
@@ -196,6 +198,8 @@ namespace ADO.NET.Starter
 
             this.dataGridView1.DataSource = ds.Tables[0];
         }
+        
+        // 結束 ****** ADO.NET 1.0   - SqlDataAdapter ******
         
         
         
