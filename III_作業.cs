@@ -16,6 +16,7 @@ namespace ADO.NET.Starter
             //....
         }
 
+        // Load Data 用
         private void button1_Click(object sender, EventArgs e)
         {
 
