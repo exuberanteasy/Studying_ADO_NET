@@ -240,6 +240,12 @@ namespace ADO.NET.Starter
             this.dataGridView2.DataSource = this.northwindDataSet1.Products;
         }
         
+        // Insert Product
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.productsTableAdapter1.InsertProduct("xxx", true);
+        }
+        
         
         
         
