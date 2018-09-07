@@ -301,7 +301,7 @@ namespace ADO.NET.Starter
             this.bindingSource1.Position = this.bindingSource1.Count - 1;
         }
         
-        // 在bindingSource1 上按2下 => 
+        //在bindingSource1 上按2下 => 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             this.label4.Text = $"{this.bindingSource1.Position + 1 }/ {this.bindingSource1.Count}";
@@ -312,6 +312,58 @@ namespace ADO.NET.Starter
         {
             FrmTool f = new FrmTool();
             f.Show();
+        }
+        
+        //DataSet結構 => Load Data
+        private void button18_Click(object sender, EventArgs e)
+        {
+            // MessageBox.Show(this.northwindDataSet1.Tables.Count.ToString());
+
+            this.categoriesTableAdapter1.Fill(this.northwindDataSet1.Categories);
+            this.productsTableAdapter1.Fill(this.northwindDataSet1.Products);
+            this.customersTableAdapter1.Fill(this.northwindDataSet1.Customers);
+
+            this.dataGridView4.DataSource = this.northwindDataSet1.Categories;
+            this.dataGridView5.DataSource = this.northwindDataSet1.Products;
+            this.dataGridView6.DataSource = this.northwindDataSet1.Customers;
+
+            this.listBox2.Items.Clear();
+
+            for(int i=0; i <= this.northwindDataSet1.Tables.Count-1; i++)
+            {
+                DataTable table = this.northwindDataSet1.Tables[i];
+                this.listBox2.Items.Add(table.TableName);
+
+                // table.Columns  資料行 (Column Schma)
+
+                this.listBox2.Font = new Font("標楷體", 10, FontStyle.Bold);
+                string s = "";
+                for(int column = 0; column <= table.Columns.Count-1; column++)
+                {
+                    s += $"{table.Columns[column].ColumnName,-30}";
+                }
+                this.listBox2.Items.Add(s);
+
+                // ToDo ......
+                // table.Rows  資料列(資料記錄)
+                for(int row = 0; row <= table.Rows.Count-1; row++)
+                {
+                    this.listBox2.Items.Add(table.Rows[row]);  //.ToString();
+
+                    // DataRow dr = table.Rows[row];
+                    // dr[0]
+                    // table.Rows[row][0]
+
+                    s = "";
+                    for(int column=0; column <= table.Columns.Count-1; column++)
+                    {
+                        s += $"{table.Rows[row][column],-30}";
+                    }
+                    this.listBox2.Items.Add(s);
+                }
+                this.listBox2.Items.Add("=========================================");
+            }
+
         }
         
         
