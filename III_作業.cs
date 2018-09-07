@@ -286,6 +286,14 @@ namespace ADO.NET.Starter
             this.bindingSource1.Position -= 1;
         }
         
+        //移至下一頁
+        private void button15_Click(object sender, EventArgs e)
+        {
+            //this.bindingSource1.MoveNext();
+            this.bindingSource1.Position += 1;
+            //this.label4.Text = (this.bindingSource1.Position + 1) + "/" + this.bindingSource1.Count;
+        }
+        
         
         
         
