@@ -160,6 +160,7 @@ namespace ADO.NET.Starter
 
         }
 
+        //產生這玩意
         private void Conn_Disposed(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
