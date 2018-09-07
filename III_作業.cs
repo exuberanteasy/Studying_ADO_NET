@@ -307,6 +307,13 @@ namespace ADO.NET.Starter
             this.label4.Text = $"{this.bindingSource1.Position + 1 }/ {this.bindingSource1.Count}";
         }
         
+        //FrmTool
+        private void button17_Click(object sender, EventArgs e)
+        {
+            FrmTool f = new FrmTool();
+            f.Show();
+        }
+        
         
         
         
