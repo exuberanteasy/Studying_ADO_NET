@@ -69,9 +69,17 @@ namespace ADO.NET.Starter
                     //釋放 System.ComponentModel.Component 所使用的所有資源。
                     conn.Dispose();
                 }
-                MessageBox.Show("done");
-            }
-                      
+                // MessageBox.Show("done");
+            }           
         }
+        
+        // Notes 用
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //SqlDataReader dataReader = new SqlDataReader();
+            Graphics g = this.CreateGraphics(); //new Graphics();
+        }
+        
+        
     }
 }
