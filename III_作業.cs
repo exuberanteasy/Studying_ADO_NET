@@ -121,6 +121,51 @@ namespace ADO.NET.Starter
             }
         }
         
+        // test using
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = null;
+
+                using (conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True"))
+                {
+                    conn.Disposed += Conn_Disposed; //按 Tab 產生
+                    using (SqlCommand command = new SqlCommand("Select * From products", conn))
+                    {
+                        conn.Open();
+                        MessageBox.Show(conn.State.ToString());
+                        SqlDataReader dataReader = command.ExecuteReader();
+
+                        this.listBox1.Items.Clear();
+
+                        while (dataReader.Read())
+                        {
+                            string s = $"{dataReader["UnitPrice"],10:c2}\t{dataReader["ProductName"],-50} {DateTime.Now:yyyy/MM/dd}";
+                            this.listBox1.Items.Add(s);
+                        }
+                    } //auto command.Dispose()
+                } // auto call conn.Close();  conn.Dispose(); this.button1.PerformClick()
+                MessageBox.Show(conn.State.ToString());
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void Conn_Disposed(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            MessageBox.Show("conn Dispose");
+        }
+        
         
         
         
