@@ -400,7 +400,18 @@ namespace ADO.NET.Starter
 
 //========================================================================================================
 //FrmSqlConnection.cs
+namespace Starter
 
+{
+    public partial class FrmSqlConnection : Form
+    {
+        public FrmSqlConnection()
+        {
+            InitializeComponent();
+            this.tabControl1.SelectedIndex = 1;
+        }
+    }
+}
 
 
 
