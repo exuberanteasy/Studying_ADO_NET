@@ -252,10 +252,6 @@ namespace ADO.NET.Starter
             // RowState.... I/D/U
             this.productsTableAdapter1.Update(this.northwindDataSet1.Products);
         }
-        
-        
-        
-        
         // 結束 ****** ADO.NET 2.0   - SqlDataAdapter ***************************************************
         
         
