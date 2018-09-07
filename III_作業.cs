@@ -255,6 +255,24 @@ namespace ADO.NET.Starter
         // 結束 ****** ADO.NET 2.0   - SqlDataAdapter ***************************************************
         
         
+        //Load Categories
+        private void button12_Click(object sender, EventArgs e)
+        {
+            this.categoriesTableAdapter1.Fill(this.northwindDataSet1.Categories);
+            // this.dataGridView3.DataSource = this.northwindDataSet1.Categories;
+
+            this.bindingSource1.DataSource = this.northwindDataSet1.Categories;
+            this.dataGridView3.DataSource = this.bindingSource1;
+
+            //==============================================================
+            this.bindingNavigator1.BindingSource = this.bindingSource1;
+
+            //==============================================================
+            this.textBox1.DataBindings.Add("Text", this.bindingSource1, "CategoryName");
+            this.pictureBox1.DataBindings.Add("Image", this.bindingSource1, "Picture", true);
+        }
+        
+        
         
         
         
