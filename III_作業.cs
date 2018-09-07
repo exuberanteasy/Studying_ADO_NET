@@ -218,6 +218,13 @@ namespace ADO.NET.Starter
             this.dataGridView2.DataSource = this.northwindDataSet1.Categories;
         }
         
+        //Customers
+        private void button23_Click(object sender, EventArgs e)
+        {
+            // this.customersTableAdapter1.Fill(this.northwindDataSet1.Customers);
+            this.dataGridView2.DataSource = this.northwindDataSet1.Customers;
+        }
+        
         
         
         
