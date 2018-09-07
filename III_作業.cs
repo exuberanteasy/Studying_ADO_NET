@@ -378,6 +378,12 @@ namespace ADO.NET.Starter
             MessageBox.Show(this.northwindDataSet1.Products.Rows[0][1].ToString());
         }
         
+        //Write XML
+        private void button20_Click(object sender, EventArgs e)
+        {
+            this.northwindDataSet1.Products.WriteXml("Products.xml", XmlWriteMode.WriteSchema);
+        }
+        
         
         
         
