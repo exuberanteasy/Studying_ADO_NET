@@ -225,6 +225,21 @@ namespace ADO.NET.Starter
             this.dataGridView2.DataSource = this.northwindDataSet1.Customers;
         }
         
+        //Products unitPrice > 30
+        private void button7_Click(object sender, EventArgs e)
+        {
+            bool b = true;
+            b = false;
+
+            bool? b1;
+            b1 = true;
+            b1 = false;
+            b1 = null;
+            
+            this.productsTableAdapter1.FillByUnitPrice(this.northwindDataSet1.Products, 30);
+            this.dataGridView2.DataSource = this.northwindDataSet1.Products;
+        }
+        
         
         
         
