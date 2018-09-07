@@ -80,6 +80,47 @@ namespace ADO.NET.Starter
             Graphics g = this.CreateGraphics(); //new Graphics();
         }
         
+        // using...  語法糖
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Connected 連線環境 - Connected  實體 DB
+
+            //Step 1: SqlConnection
+            //Step 2: SqlCommand
+            //Step 3: SqlDataReader
+            //Step 4: Control UI
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True"))
+                {
+                    using(SqlCommand command = new SqlCommand("Select * From Products", conn))
+                    {
+                        conn.Open();
+                        SqlDataReader dataReader = command.ExecuteReader();
+
+                        this.listBox1.Items.Clear(); //清掉 listBox1
+                        while (dataReader.Read())
+                        {
+                            string s = $"{dataReader["UnitPrice"],10:c2}\t{dataReader["ProductName"],-50} {DateTime.Now:yyyy/MM/dd}";
+                            this.listBox1.Items.Add(s);
+                        }
+                    } //auto command.Dispose()
+                } //auto call conn.Close(); conn.Dispose();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+        
+        
+        
         
     }
 }
