@@ -272,6 +272,13 @@ namespace ADO.NET.Starter
             this.pictureBox1.DataBindings.Add("Image", this.bindingSource1, "Picture", true);
         }
         
+        //移至最前
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //this.bindingSource1.MoveFirst();
+            this.bindingSource1.Position = 0;
+        }
+        
         
         
         
