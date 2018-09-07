@@ -246,6 +246,13 @@ namespace ADO.NET.Starter
             this.productsTableAdapter1.InsertProduct("xxx", true);
         }
         
+        //Update Products
+        private void button10_Click(object sender, EventArgs e)
+        {
+            // RowState.... I/D/U
+            this.productsTableAdapter1.Update(this.northwindDataSet1.Products);
+        }
+        
         
         
         
