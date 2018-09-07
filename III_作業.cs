@@ -441,6 +441,36 @@ namespace Starter
             }
         }
         
+        // .Config  組態檔 - Class Settings
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //    MessageBox.Show(Settings.Default.MyNWConnectionString);
+            //    //Settings.Default.MyNWConnectionString = "hjj";
+            //    MessageBox.Show(Settings.Default.count.ToString());
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
+                {
+                    using(SqlCommand command = new SqlCommand("select * from Products", conn))
+                    {
+                        conn.Open();
+                        using(IDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                this.listBox1.Items.Add(dataReader["ProductName"]);
+                            }
+                        } 
+                    } // command.Dispose()
+                } // auto conn.close(); conn.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
         
         
         
