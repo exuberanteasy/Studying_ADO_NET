@@ -301,6 +301,12 @@ namespace ADO.NET.Starter
             this.bindingSource1.Position = this.bindingSource1.Count - 1;
         }
         
+        // 在bindingSource1 上按2下 => 
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+            this.label4.Text = $"{this.bindingSource1.Position + 1 }/ {this.bindingSource1.Count}";
+        }
+        
         
         
         
