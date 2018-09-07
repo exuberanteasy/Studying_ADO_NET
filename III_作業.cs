@@ -426,6 +426,21 @@ namespace Starter
             }
         }
         
+        //SQL Server 驗證
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection("Data Source = .; Initial Catalog=Northwind; User ID = sa; Password = sa");
+                conn.Open();
+                MessageBox.Show("successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
         
         
         
