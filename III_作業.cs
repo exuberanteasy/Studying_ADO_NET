@@ -185,6 +185,18 @@ namespace ADO.NET.Starter
             this.dataGridView1.DataSource = ds.Tables[0];
         }
         
+        // Products unitPrice > 30
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
+            SqlDataAdapter adapter = new SqlDataAdapter("Select * From Products where UnitPrice > 30", conn);
+            DataSet ds = new DataSet();
+
+            adapter.Fill(ds);  //Auto conn.Open() => SqlCommand.executeXXX()..sqlDataReader... => conn.Close()
+
+            this.dataGridView1.DataSource = ds.Tables[0];
+        }
+        
         
         
         
