@@ -384,6 +384,14 @@ namespace ADO.NET.Starter
             this.northwindDataSet1.Products.WriteXml("Products.xml", XmlWriteMode.WriteSchema);
         }
         
+        //Read XML
+        private void button21_Click(object sender, EventArgs e)
+        {
+            this.northwindDataSet1.Products.Clear();
+            this.northwindDataSet1.Products.ReadXml("Products.xml");
+            this.dataGridView5.DataSource = this.northwindDataSet1.Products;
+        }
+        
         
         
         
