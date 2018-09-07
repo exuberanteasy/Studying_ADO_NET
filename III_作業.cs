@@ -471,6 +471,35 @@ namespace Starter
             }
         }
         
+        // .Config  組態檔 - ConfigurationManager
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connString = ConfigurationManager.ConnectionStrings["ADO.NET.Properties.Settings.NorthwindConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    using (SqlCommand command = new SqlCommand("select * from Products", conn))
+                    {
+                        conn.Open();
+                        using (SqlDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                this.listBox1.Items.Add(dataReader["ProductName"]);
+                            }
+                        }  //command.Dispose();
+                    }  // auto conn.Close();  conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+        
+        
         
         
         
