@@ -23,5 +23,17 @@ Noting
 }
 //===================================================================================
 
+ConnectionString_資料庫的連接字串
+"Persist Security Info=false; Integrated Security=true;
+Initial Catalog = SQLServer裡面的資料庫名稱，例如Northwind;server=(local)"
+------------------------------------------------------------------
+server=(local)，也可以寫成 server=.。 兩者都是代表本機的意思。
+
+"Data Source=.\MSSQLSERVER2008; Initial Catalog=SQLServer裡面的資料庫名稱，例如Northwind;
+Integrated Security=True;"
+    
+※ 註解(1):如果是連接SQL Server Express 版，請寫成"data source=.\SQLEXPRESS ...後續字串同上"。
+※
+
 
 Web.Config
