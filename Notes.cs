@@ -30,10 +30,23 @@ Initial Catalog = SQLServer裡面的資料庫名稱，例如Northwind;server=(lo
 server=(local)，也可以寫成 server=.。 兩者都是代表本機的意思。
 
 "Data Source=.\MSSQLSERVER2008; Initial Catalog=SQLServer裡面的資料庫名稱，例如Northwind;
-Integrated Security=True;"
+  Integrated Security=True;"
     
-※ 註解(1):如果是連接SQL Server Express 版，請寫成"data source=.\SQLEXPRESS ...後續字串同上"。
-※
+※ 註解(1): 如果是連接SQL Server Express 版，請寫成"data source=.\SQLEXPRESS ...後續字串同上"。
+※ 註解(2): 如果用自訂的帳號、密碼連接資料庫，請寫成"Data Source=.\MSSQLSERVER2008; 
+    Initial Catalog=SQLServer裡面的資料庫名稱，例如Northwind; Persist Security Info=True; 
+    User ID=帳號;Password=密碼"。
 
+        
+        
+        
+        
+        
 
 Web.Config
+
+
+
+
+
+
