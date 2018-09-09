@@ -563,7 +563,32 @@ namespace Starter
             }
         }
         
-        
+        //SQL Server  Local DB 資料庫檔案 - 絕對路徑
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\ADO.NET\ADO.NET\ADO.NET\bin\Debug\MyAlbum.mdf;Integrated Security=True;Connect Timeout=30";
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    using(SqlCommand command = new SqlCommand("Select * from MyTable", conn))
+                    {
+                        conn.Open();
+                        using (SqlDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                this.listBox1.Items.Add(dataReader["City"]);
+                            }
+                        } //command.Dispose()
+                    } // auto conn.Close(); conn.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }    
+        }
         
         
         
