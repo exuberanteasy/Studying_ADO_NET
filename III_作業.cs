@@ -504,7 +504,6 @@ namespace Starter
             try
             {
                 //加密
-
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 ConfigurationSection section = config.Sections["connectionStrings"];
                 section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
@@ -515,6 +514,25 @@ namespace Starter
             {
                 MessageBox.Show(ex.Message);
                 // throw;
+            }
+        }
+        
+        //解密 組態檔連接字串
+        private void button59_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //解密
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ConfigurationSection section = config.Sections["connectionStrings"];
+                section.SectionInformation.UnprotectSection();
+                config.Save();
+
+                MessageBox.Show("解密成功");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         
