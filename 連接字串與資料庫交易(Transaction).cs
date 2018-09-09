@@ -81,16 +81,14 @@ namespace GoSqlDataSource.fonts
 ∥ CreateObjRef  => 建立包含所有關資訊的物件，這些資訊是產生用來與遠端物件通訊的所需 Proxy (繼承自 MarshaByRefObject )。
 ∥ Dispose   => 多載。
 ∥ Equals  => 判斷指定的 Object 和目前的 Object 是否相等 (繼承自 Object )。
-∥ Finalize  =>  
-∥ GetHashCode  =>
-∥ GetLifetimeService  => 
-∥ GetType
-∥ IntializeLifetimeService
-∥ MemberwiseClone
-∥ Rollback
-∥ Save
-
-
+∥ Finalize  =>  在記憶體回收(GC) 回收 Object 前，允許 Object 嘗試釋放資源並執行其他清除作業(繼承自 Object)。
+∥ GetHashCode  =>  做為特定型別的雜奏函式(繼承自 Object )。
+∥ GetLifetimeService  =>  擷取控制這個執行個體存留期(Lifetime)原則的目前存留期服務物件(繼承自 MarshaByRefObject )。
+∥ GetType   =>   取得目前執行個體的 Type (繼承自 Object )。
+∥ IntializeLifetimeService => 取得存留期服務物件來控制這個執行個體的存留期原則(繼承自 MarshaByRefObject)。
+∥ MemberwiseClone   => 多載。
+∥ Rollback  =>  多載。從暫停狀態復原交易。
+∥ Save  =>  建立交易中的儲存點 (可用來復原部分的交易)，以及指定儲存點名稱。
 
 
 
