@@ -498,6 +498,26 @@ namespace Starter
             }
         }
         
+        //加密 組態檔連接字串
+        private void button58_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //加密
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ConfigurationSection section = config.Sections["connectionStrings"];
+                section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+                config.Save();
+                MessageBox.Show("加密成功");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                // throw;
+            }
+        }
+        
         
         
         
