@@ -77,11 +77,18 @@ namespace GoSqlDataSource.fonts
 }
 
 //===================== SqlTransaction類別的方法 ============================
-Commit     =>   認可資料庫交易。( 覆寫DbTransaction.Commit() )。
-CreateObjRef  => 建立包含所有關資訊的物件，這些資訊是產生用來與遠端物件通訊的所需 Proxy (繼承自 MarshaByRefObject )。
-
-
-
+∥ Commit     =>   認可資料庫交易。( 覆寫DbTransaction.Commit() )。
+∥ CreateObjRef  => 建立包含所有關資訊的物件，這些資訊是產生用來與遠端物件通訊的所需 Proxy (繼承自 MarshaByRefObject )。
+∥ Dispose   => 多載。
+∥ Equals  => 判斷指定的 Object 和目前的 Object 是否相等 (繼承自 Object )。
+∥ Finalize  =>  
+∥ GetHashCode  =>
+∥ GetLifetimeService  => 
+∥ GetType
+∥ IntializeLifetimeService
+∥ MemberwiseClone
+∥ Rollback
+∥ Save
 
 
 
