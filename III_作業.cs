@@ -645,7 +645,35 @@ Integrated Security=True; Connect Timeout=30";
 
                 }
             }
-         
+        }
+        
+        //StateChange Event => Connected
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connString = ConfigurationManager.ConnectionStrings["ADO.NET.Properties.Settings.NorthwindConnectionString"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.StateChange += Conn_StateChange;
+                    using (SqlCommand command = new SqlCommand("Select * From Products", conn))
+                    {
+                        conn.Open();
+                        using (SqlDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                this.listBox2.Items.Add(dataReader["ProductName"]);
+                            }
+                        }
+                    } //command.Dispose()
+                } // auto conn.Close(); conn.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         
         
