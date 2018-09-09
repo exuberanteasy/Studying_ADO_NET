@@ -619,6 +619,36 @@ Integrated Security=True; Connect Timeout=30";
             }
         }
         
+        //SQL Server  Local DB 資料庫檔案 - 相對路徑  - sqlConnectionStringBuilder
+        private void button7_Click(object sender, EventArgs e)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+
+            builder.DataSource = @"(LocalDB)\MSSQLLocalDB";
+            builder.AttachDBFilename = Application.StartupPath + @"\MyAlbum.mdf";
+            builder.IntegratedSecurity = true;
+
+            using (SqlConnection conn = new SqlConnection(builder.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("Select * From MyTable", conn))
+                {
+                    conn.Open();
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        this.listBox1.Items.Clear();
+
+                        while (dataReader.Read())
+                        {
+                            this.listBox1.Items.Add(dataReader["City"]);
+                        }
+                    }
+
+                }
+            }
+         
+        }
+        
+        
         
         
         
