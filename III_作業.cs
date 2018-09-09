@@ -536,6 +536,39 @@ namespace Starter
             }
         }
         
+        //SQL Server Local DB
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connString = Settings.Default.MyLocalDB;
+                using(SqlConnection conn = new SqlConnection(connString))
+                {
+                    using (SqlCommand command = new SqlCommand("select * from MyTable", conn))
+                    {
+                        conn.Open();
+                        using(SqlDataReader dataReader = command.ExecuteReader())
+                        {
+                            while (dataReader.Read())
+                            {
+                                this.listBox1.Items.Add(dataReader["aaa"]);
+                            }
+                        }
+                    } // command.Dispose()
+                } // auto conn.Close(); conn.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
         
         
         
