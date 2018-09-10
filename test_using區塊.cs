@@ -12,14 +12,6 @@ using...
 //---- 結束 using ，自動處置(Dispose) 它控制的所有資源 ------------------
 
 //===============================================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-
 using System.Web.Configuration;
 using System.Data; 
 using System.Data.SqlClient;
