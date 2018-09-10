@@ -691,6 +691,31 @@ Integrated Security=True; Connect Timeout=30";
             // 應該是因為有更好的方法，所以老師沒有實作
         }
         
+        //連線數 Label3  =>  Pool #1 NW - 100 connection open
+        private void button9_Click(object sender, EventArgs e)
+        {
+            SqlConnection[] conns = new SqlConnection[100];
+            SqlDataReader[] dataReaders = new SqlDataReader[100];
+
+            for (int i = 0; i < conns.Length; i++)
+            {
+                conns[i] = new SqlConnection(Settings.Default.NorthwindConnectionString);
+                conns[i].Open();
+
+                this.label3.Text = (i + 1).ToString();
+                Application.DoEvents();
+
+                SqlCommand command = new SqlCommand("select * from products", conns[i]);
+
+                dataReaders[i] = command.ExecuteReader();  // new SqlDataReader();
+
+                while (dataReaders[i].Read())
+                {
+                    this.listBox3.Items.Add(dataReaders[i]["ProduvtName"]);
+                }
+            }
+        }
+        
         
         
         
