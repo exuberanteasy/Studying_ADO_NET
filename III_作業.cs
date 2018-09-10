@@ -748,6 +748,44 @@ Integrated Security=True; Connect Timeout=30";
             }
         }
         
+        // Pooling(共用連接 / 集區)  提高 AP 效能   =>   label1  =>  Pool = true
+        private void button15_Click(object sender, EventArgs e)
+        {
+            SqlConnection[] conns = new SqlConnection[100];
+            SqlDataReader[] dataReaders = new SqlDataReader[100];
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(Settings.Default.NorthwindConnectionString);
+            builder.Pooling = true;
+
+            System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+            for (int i = 0; i < conns.Length - 1; i++)
+            {
+                conns[i] = new SqlConnection(builder.ConnectionString);
+                conns[i].Open();
+
+                //this.label3.Text = (i + 1).toString();
+                //Application.DoEvents();
+
+                SqlCommand command = new SqlCommand("Select * from products", conns[i]);
+
+                dataReaders[i] = command.ExecuteReader();  //new SqlDataReader();
+
+                while (dataReaders[i].Read())
+                {
+                    this.listBox3.Items.Add(dataReaders[i]["ProductName"]);
+                }
+
+                conns[i].Close();  // conn Return to POOL
+            }
+            watch.Stop();
+
+            this.label1.Text = watch.Elapsed.TotalSeconds.ToString();
+
+            //DateTime T1 = DateTime.Now;
+            //T1.Subtract(T2)
+        }
+        
         
         
         
