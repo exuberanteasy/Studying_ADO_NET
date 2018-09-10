@@ -867,6 +867,58 @@ Integrated Security=True; Connect Timeout=30";
             }
         }
         
+        //sqlException --- 第二個按鈕
+        private void button27_Click(object sender, EventArgs e)
+        {
+            string connString = "Data Source=.;Initial Catalog=Northwindxx;Integrated Security=True";
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(connString);
+
+            SqlCommand command = new SqlCommand("Select * from Products", conn);
+            SqlDataReader dr = null;
+
+            try
+            {
+                conn.Open();
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    this.comboBox2.Items.Add(dr["ProductName"]);
+                }
+                this.comboBox2.SelectedIndex = 0;
+            }
+            catch (SqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 17:
+                        MessageBox.Show("Wrong Server");
+                        break;
+                    case 4060:
+                        MessageBox.Show("Wrong DAtaBase");
+                        break;
+                    case 18456:
+                        MessageBox.Show("Wrong User");
+                        break;
+                    default:
+                        MessageBox.Show(ex.Message);
+                        break;
+                }   
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+                if(conn != null)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+        }
+        
         
         
         
