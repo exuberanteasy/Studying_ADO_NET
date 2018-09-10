@@ -716,6 +716,37 @@ Integrated Security=True; Connect Timeout=30";
             }
         }
         
+        //連線數 Label3  =>  Pool #2 AW - 200 connection open
+        private void button14_Click(object sender, EventArgs e)
+        {
+            const int MAXPoolSize = 200;
+            SqlConnection[] conns = new SqlConnection[MAXPoolSize];
+            SqlDataReader[] dataReaders = new SqlDataReader[MAXPoolSize];
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(Settings.Default.NorthwindConnectionString);
+            builder.InitialCatalog = "AdventureWorks";
+            builder.MaxPoolSize = MAXPoolSize;
+            builder.ConnectTimeout = 2;
+            //MessageBox.Show(builder.ConnectionString);
+
+            for (int i = 0; i < conns.Length; i++)
+            {
+                conns[i] = new SqlConnection(builder.ConnectionString);
+                conns[i].Open();
+
+                this.label3.Text = (i + 1).ToString();
+                Application.DoEvents();
+
+                SqlCommand command = new SqlCommand("select * from Production.Product", conns[i]);
+
+                dataReaders[i] = command.ExecuteReader(); //new SqlDataReader();
+
+                while (dataReaders[i].Read())
+                {
+                    this.listBox3.Items.Add(dataReaders[i]["Name"]);
+                }    
+            }
+        }
         
         
         
