@@ -676,6 +676,16 @@ Integrated Security=True; Connect Timeout=30";
             }
         }
         
+        //  DisConnected - 離線 DataSet   2. 0 XXXTableAdapter
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.productsTableAdapter1.Connection.StateChange += Conn_StateChange;
+
+            this.productsTableAdapter1.Fill(this.northwindDataSet1.Products);
+            this.dataGridView1.DataSource = this.northwindDataSet1.Products;
+        }
+        
+        
         
         
         
