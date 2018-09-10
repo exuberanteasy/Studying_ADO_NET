@@ -4,7 +4,7 @@
 
 if (dr != null)
 {
-    cmd.Cancel();
+  cmd.Cancel();
   //----- 關閉 DataReader 之前，一定要先「取消」SqlCommand ---------------
   dr.Close();
 }
