@@ -676,13 +676,19 @@ Integrated Security=True; Connect Timeout=30";
             }
         }
         
-        //  DisConnected - 離線 DataSet   2. 0 XXXTableAdapter
+        //  DisConnected - 離線 DataSet   =>   2. 0 XXXTableAdapter
         private void button10_Click(object sender, EventArgs e)
         {
             this.productsTableAdapter1.Connection.StateChange += Conn_StateChange;
 
             this.productsTableAdapter1.Fill(this.northwindDataSet1.Products);
             this.dataGridView1.DataSource = this.northwindDataSet1.Products;
+        }
+        
+        // DisConnected - 離線 DataSet  =>  1.0 SqlTableAdapter
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // 應該是因為有更好的方法，所以老師沒有實作
         }
         
         
