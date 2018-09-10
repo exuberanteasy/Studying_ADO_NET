@@ -821,6 +821,52 @@ Integrated Security=True; Connect Timeout=30";
             this.label2.Text = watch.Elapsed.TotalSeconds.ToString();
         }
         
+        //sqlException
+        private void button23_Click(object sender, EventArgs e)
+        {
+            string connString = "Data Source=.;Initial Catalog=Northwindxxx;Integrated Security=True";
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(connString);
+
+            SqlCommand command = new SqlCommand("Select * from Products", conn);
+            SqlDataReader dr = null;
+
+            try
+            {
+                conn.Open();
+                dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    this.comboBox2.Items.Add(dr["ProductName"]);
+                }
+
+                this.comboBox2.SelectedIndex = 0;
+            }
+            catch (SqlException ex)
+            {
+                string s = "";
+                for (int i = 0; i <= ex.Errors.Count -1; i++)
+                {
+                    s += string.Format("{0}: {1}", ex.Errors[i].Number, ex.Errors[i].Message) + Environment.NewLine;
+                }
+                MessageBox.Show("error count:" + ex.Errors.Count + Environment.NewLine + s);
+                //throw;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (command != null) command.Dispose();
+
+                if(conn != null)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+        }
+        
         
         
         
