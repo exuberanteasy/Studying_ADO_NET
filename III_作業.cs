@@ -821,7 +821,7 @@ Integrated Security=True; Connect Timeout=30";
             this.label2.Text = watch.Elapsed.TotalSeconds.ToString();
         }
         
-        //sqlException
+        //sqlException --- 第一個按鈕
         private void button23_Click(object sender, EventArgs e)
         {
             string connString = "Data Source=.;Initial Catalog=Northwindxxx;Integrated Security=True";
