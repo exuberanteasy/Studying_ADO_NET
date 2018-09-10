@@ -67,7 +67,10 @@ namespace GoDataReader
 //=====================================================================================
 * 上面的程式碼中，必須在關閉 DataReader(dr.Close())之後，才能關閉資料庫連接(Conn.Close()),這個順序不要搞錯。
 * DataReader的 .Close()方法為了輸出參數、傳回值和 RecordsAffected 填入值(影響了幾列資料? 通常在新增、刪除、修改的SQL指令上)，
-  將會增加許多時間來關閉 SqlDataReader。此舉在大量或複雜SQL查詢
+  將會增加許多時間來關閉 SqlDataReader。此舉在大量或複雜SQL查詢時，處理時間會更加明顯。
+* 如果這一次查詢的傳回值與資料數量並不顯著，建議您先使用 SqlCommand物件的 .Cancel()方法(先把 Command 物件取消後)，
+  在呼叫 DataReader的 .Close()，可降低關閉 SqlDataReader的時間。 如此一來可提升效率。
+  
 
 
 
