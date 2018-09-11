@@ -70,7 +70,8 @@ namespace CaseStudy
 }
 
 //=====================================================
-* 切記!請啟動 DropDownList控制項的AutoPostBack功能。
+* 切記! 請啟動 DropDownList控制項的AutoPostBack功能。
+* 被選定的食物，會出現在ListBox裡面。 請啟動 ListBox控制項的AutoPostBack功能。ListBox裡面也可以點選，就能刪除ListBox的子選項。
 
 
 
