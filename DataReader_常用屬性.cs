@@ -227,6 +227,52 @@ protected void Page_Load(object sender, EventArgs e)
     }
 }
 
+//=======執行update、Insert、Delete陳述句，搭配參數寫法=========
+//===== 執行Select陳述句，傳回的資料列數目(=-1) =============================================
+using System.Web.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace RecordsAffected_01
+{
+    public partial class RecordsAffected_01 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //=== 開始資料庫的連接=====
+            SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["Web.Config檔裡面的資料連接字串"].ConnectionString);
+
+            Conn.Open();
+
+            //===== 執行SQL指令。或是查詢、撈取資料。========
+            SqlCommand cmd = new SqlCommand("select * from test", Conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            //=== 自由發揮 ===========
+            GridView1.DataSource = dr;
+            GridView1.DataBind();
+
+            //=== 釋放資源 ======
+            if (dr != null)
+            {
+                cmd.Cancel();
+                dr.Close();
+            }
+
+            //**************************************
+            Label1.Text = "執行Select 的 SQL指令以後，影響了" + dr.RecordsAffected + "列的紀錄。";
+            //===重點(1) IsClosed屬性和RecordsAffeccted屬性是在關閉 SqlDataReader之後，您還可以呼叫的兩個屬性。=====
+            //===重點(2) 使用Seleect陳述式則 RecordsAffected屬性為(-1) =====
+
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+                Conn.Dispose();
+            }
+        }
+    }
+}
+
 
 
 
