@@ -20,7 +20,8 @@ namespace CaseStudy
             //SqlConnection Conn = new SqlConnection(WebConfigurationManager
                      .ConnectionStrings["testConnectionString"].ConnectionString);
             //這一行 "Data Source=.;Initial Catalog=Food_Calorie;Integrated Security=True" 不知道是什麼問題 ??
-            SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["Data Source=.;Initial Catalog=Food_Calorie;Integrated Security=True"].ConnectionString);
+            SqlConnection Conn = new SqlConnection(WebConfigurationManager
+                     .ConnectionStrings["Data Source=.;Initial Catalog=Food_Calorie;Integrated Security=True"].ConnectionString);
             SqlDataReader dr = null;
 
             string sqlstr = "select Food_Calorie from Food_Calorie where id = " + DropDownList1.SelectedValue;
