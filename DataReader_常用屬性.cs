@@ -214,7 +214,11 @@ protected void Page_Load(object sender, EventArgs e)
 
     int RecordsAffected = cmd.ExecuteNonQuery();
     Label1.Text = "執行Update的SQL指令之後，影響了" + RecordsAffected + "列的紀錄。";
-    //--或者你可以這樣寫，代表有更動到一些紀錄。-----------
+    //----或者你可以這樣寫，代表有更動到一些紀錄。-----------
+    // if (RecordsAffected > 0)
+    // {
+    //     Response.Write("資料更動成功。共有" + RecordsAffected + "列紀錄被影響。")
+    // }
 
     if (Conn.State == ConnectionState.Open)
     {
