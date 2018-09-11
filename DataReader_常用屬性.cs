@@ -197,7 +197,30 @@ cmd.Parameters.Add("@ID", SqlDbType.Int);
 cmd.Parameters["@ID"].Value = Convert.toInt32(Request["id"]);
 
 
+//==== RecordsAffected 屬性，資料異動 =============================================================================
+* 
+using System.Web.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
+protected void Page_Load(object sender, EventArgs e)
+{
+    SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["Web.Config檔裡面的資料連接字串"].ConnectionString);
+    Conn.Open();
+
+    string sqlstr = "Update test set title = '真珠草萃取物可以治療肝炎 韓國技轉錦鴻' where id =3 ";
+    SqlCommand cmd = new SqlCommand(sqlstr, Conn);
+
+    int RecordsAffected = cmd.ExecuteNonQuery();
+    Label1.Text = "執行Update的SQL指令之後，影響了" + RecordsAffected + "列的紀錄。";
+    //--或者你可以這樣寫，代表有更動到一些紀錄。-----------
+
+    if (Conn.State == ConnectionState.Open)
+    {
+        Conn.Close();
+        Conn.Dispose();
+    }
+}
 
 
 
