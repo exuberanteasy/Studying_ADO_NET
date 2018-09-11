@@ -68,3 +68,11 @@ namespace CaseStudy
         
     }
 }
+
+//=====================================================
+* 切記!請啟動 DropDownList控制項的AutoPostBack功能。
+
+
+
+
+
