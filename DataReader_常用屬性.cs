@@ -198,7 +198,8 @@ cmd.Parameters["@ID"].Value = Convert.toInt32(Request["id"]);
 
 
 //==== RecordsAffected 屬性，資料異動 =============================================================================
-* 
+* 傳回SQL指令執行增/刪/修 之後的資料列「數目」。
+
 using System.Web.Configuration;
 using System.Data;
 using System.Data.SqlClient;
