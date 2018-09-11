@@ -123,9 +123,73 @@ namespace test_DataReader
     }
 }
 
+//===== HasRows ===============================
+* 以我們常見的會員登入為例，當會員輸入帳號、密碼之後，我們該怎麼確認資料庫裡面是否真的有這名會員呢?
+  HasRows屬性如果回應true，表示會員資料表裡面真有這筆紀錄，真的有這個帳號。
 
+using System.Web.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
+namespace test_DataReader
+{
+    public partial class DataReader_Depth : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+        }
 
+        //HasRows
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["存放在Web.Config檔裡面的資料庫連接字串"].ConnectionString);
+            Conn.Open();
+
+            //下面這行這種寫法會受到攻擊
+            //SqlCommand cmd = new SqlCommand("select * from db_user where name = '" + TextBox1.Text + "' and password = '" + TextBox2.Text + "'", Conn);
+
+            //建議使用參數來做，以免受到攻擊。本書另有專文解說。
+            SqlCommand cmd = new SqlCommand("select * from db_user wher name = @name and password =  @passwd", Conn);
+
+            cmd.Parameters.Add("@name", SqlDbType.VarChar, 50);
+            cmd.Parameters["@name"].Value = TextBox1.Text;
+
+            cmd.Parameters.Add("@passwd", SqlDbType.VarChar, 256);
+            cmd.Parameters["@passwd"].Value = TextBox2.Text;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                Label1.Text = "Login Success! 登入成功!";
+
+                cmd.Cancel();
+                if (Conn.State == ConnectionState.Open)
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+                // Respose.Redirect("---URL---");
+                //---通過帳號、密碼的檢查之後，導向到會員專屬的網頁(後台管理的網頁)。----
+            }
+            else
+            {
+                Label1.Text = "Bye~~~~~。<font color=red>登入失敗!!</font>";
+
+                cmd.Cancel();
+                if (Conn.State == ConnectionState.Open)
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+    }
+}
+//---補充說明: ------------------
+* 關於SQL Injection(資料隱碼、數據注入) 攻擊與 XSS 攻擊。建議使用SqlCommand「參數」的寫法，便可以初步地防範一些攻擊。
+//**** 重點!  使用參數，防範SQL Injection攻擊 **********
 
 
 
