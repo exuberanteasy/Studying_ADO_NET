@@ -68,6 +68,60 @@ namespace test_DataReader
     }
 }
 
+//==== FieldCount_列出資料表的欄位數(資料行數目) =============================================
+using System.Web.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace test_DataReader
+{
+    public partial class DataReader_Depth : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            SqlConnection Conn = new SqlConnection(WebConfigurationManager
+                .ConnectionStrings["存在Web.Config檔案裡面的 DB 連接字串"].ConnectionString);
+            SqlDataReader dr = null;
+            SqlCommand cmd = new SqlCommand("select id, test_time, summary, author from test", Conn);
+
+            try
+            {
+                //以下程式，只放「執行期間」的指令!
+                Conn.Open();  //---- 連接 DB -----
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    //每次讀取一列資料，直到完畢為止(EOF)。
+                    for (int i = 0; i <= (dr.FieldCount -1); i++)
+                    {
+                        //--- SqlDataReader的 .FieldCount屬性--目前一筆紀錄的資料行(欄位、Column)數。-----
+                        Label1.Text += dr[i].ToString() +  "<br />";
+                    }
+                    Label1.Text += "<hr />";
+                }
+            }
+            catch (Exception ex)
+            {
+                //---如果有錯誤或是例外狀況，將執行這一段-----
+                Response.Write("<b>Error Message---- </b>" + ex.ToString() + "<HR/>");
+            }
+            finally
+            {
+                if (dr != null)
+                {
+                    cmd.Cancel();
+                    dr.Close();
+                }
+                if (Conn.State == System.Data.ConnectionState.Open)
+                {
+                    Conn.Close();
+                    Conn.Dispose();
+                }
+            }
+        }
+    }
+}
 
 
 
