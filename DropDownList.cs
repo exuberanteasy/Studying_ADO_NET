@@ -17,7 +17,9 @@ namespace CaseStudy
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["testConnectionString"].ConnectionString);
+            //SqlConnection Conn = new SqlConnection(WebConfigurationManager
+                     .ConnectionStrings["testConnectionString"].ConnectionString);
+            //這一行 "Data Source=.;Initial Catalog=Food_Calorie;Integrated Security=True" 不知道是什麼問題 ??
             SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["Data Source=.;Initial Catalog=Food_Calorie;Integrated Security=True"].ConnectionString);
             SqlDataReader dr = null;
 
