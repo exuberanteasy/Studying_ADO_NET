@@ -1,6 +1,11 @@
 DataReader 常用屬性
 
 //===== Depth_深度 ==========================================================================
+* 是一個取得值，表示目前"列(Row,紀錄)"的巢狀深度。
+* 型別為 System.Int32(整數)代表目前資料列(Row，紀錄)的巢狀深度。最外面的資料表深度為零。
+* .NET Framework Data Provider for SQL Server不支援巢狀，永遠傳回"零"。
+
+
 using System.Web.Configuration;
 using System.Data.SqlClient;
 
