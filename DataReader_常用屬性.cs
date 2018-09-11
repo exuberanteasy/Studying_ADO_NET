@@ -189,7 +189,17 @@ namespace test_DataReader
 }
 //---補充說明: ------------------
 * 關於SQL Injection(資料隱碼、數據注入) 攻擊與 XSS 攻擊。建議使用SqlCommand「參數」的寫法，便可以初步地防範一些攻擊。
-//**** 重點!  使用參數，防範SQL Injection攻擊 **********
+//**** 重點!  使用參數，防範SQL Injection攻擊 *********
+
+//----- 改用 SqlCommand的 @參數來作 -------------------------------
+Sqlcommand cmd = new SqlCommand("select * from test where id = @ID", Conn);
+cmd.Parameters.Add("@ID", SqlDbType.Int);
+cmd.Parameters["@ID"].Value = Convert.toInt32(Request["id"]);
+
+
+
+
+
 
 
 
