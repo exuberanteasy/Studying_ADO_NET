@@ -107,7 +107,8 @@ namespace Go_GridView
 這是重點!
 在 Web畫面上"做的任何動作"，例如: 按下任何一個ASP.NET Button按鈕......等等。
 都會引起PostBack(回傳)進而重新觸發Page_Load 事件。
-所以，我們才會在裡面，設計一段 if(!Page.PostBack)或是 IF Not Page.PostBack 判斷式來判斷「網頁是否第一次被執行?」這個觀念很重要
+所以，我們才會在裡面，設計一段 if(!Page.PostBack)或是 IF Not Page.PostBack 判斷式來判斷「網頁是否第一次被執行?」這個觀念很重要!
+詳見ASP.NET專題實務(一)第三章的第一節。
 
 
 
