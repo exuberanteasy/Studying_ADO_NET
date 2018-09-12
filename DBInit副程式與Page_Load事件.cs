@@ -111,6 +111,20 @@ namespace Go_GridView
 詳見ASP.NET專題實務(一)第三章的第一節。
 
 
+//======= 後置程式碼(二): GridView更新(RowUpDating)事件 ============================
+protected void GridView1_RowUpdating(object sender, GridViewUpdatedEventArgs e)
+{
+    //============
+    //----修改、更新-------
+    //==============
+
+    //---第一、在GridView的「編輯」模式裡面的，先抓取使用者已經修改之後，
+    // 每個欄位物件(文件輸入方塊、TextBox)。
+    // 因為前面有三個「功能鍵 (編輯、選取、刪除)」，請看上面的HTML 原始碼。
+    // 所以Cells()的第一格是從"零"算起，需扣掉前三個功能鍵與id欄位。
+}
+
+
 
 
 
