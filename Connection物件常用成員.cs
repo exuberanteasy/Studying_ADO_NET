@@ -1,4 +1,5 @@
 Connection 物件常用成員
+16-9
 
 using System.Data.SqlClient;
 
