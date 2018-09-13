@@ -23,3 +23,6 @@ cn.Close();
 string cnStr = "Server=Server1; database=Northwind; uid=sa; pwd=1234;";
 
 
+cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" + 
+                       "AttachDbFilename=|DataDirectory|Northwind.mdf;" +
+                       "Integrated Security=True";
