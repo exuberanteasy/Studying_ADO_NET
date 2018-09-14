@@ -1,5 +1,6 @@
 如何Connection物件
 
+//---- FileName.Form1.cs ---------------------------------------
 using System.Data.SqlClient;
 
 namespace ConnectionDemo1
